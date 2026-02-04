@@ -3,29 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo - Selaria Campo do Gado</title>
+<title>Catálogo Completo - Selaria Campo do Gado</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
 <style>
-body{font-family:'Poppins',sans-serif;background:#f4f4f4;color:#2b1d12;padding:20px;}
-h1{text-align:center;color:#8b6b3f;margin-bottom:30px;}
-.catalog-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;}
-.product-card{background:#fff;padding:15px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.1);}
-.product-card img{width:100%;border-radius:12px;margin-bottom:10px;}
-.product-card h3{margin:0 0 10px 0;color:#8b6b3f;}
-.product-card p{font-size:14px;margin-bottom:10px;}
-.product-card strong{display:block;margin-bottom:10px;color:#c9a46a;font-size:16px;}
-.product-card a{color:#2b1d12;text-decoration:none;margin-right:10px;font-weight:600;}
-.product-card a:hover{text-decoration:underline;}
+body{font-family:'Poppins',sans-serif;margin:0;padding:0;background:#f4f4f4;color:#2b1d12;}
+.container{max-width:1200px;margin:40px auto;padding:20px;}
+h1{text-align:center;color:#8b6b3f;margin-bottom:20px;}
+.stats{display:flex;flex-wrap:wrap;justify-content:space-around;margin:20px 0;font-weight:600;gap:10px;}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;justify-content:center;}
+.filters select,.filters input{padding:10px;border-radius:8px;border:1px solid #ccc;width:200px;}
+.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;}
+.product{background:#fff;padding:15px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.1);display:flex;flex-direction:column;align-items:center;text-align:center;transition:.3s;}
+.product:hover{transform:scale(1.02);}
+.product img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:10px;}
+.product h3{margin:5px 0;color:#8b6b3f;}
+.product p{margin:3px 0;font-size:14px;}
+.product strong{margin:5px 0;color:#c9a46a;font-size:16px;}
+.product a{display:inline-block;margin-top:5px;text-decoration:none;background:#c9a46a;color:#fff;padding:8px 12px;border-radius:8px;font-weight:600;transition:.3s;}
+.product a:hover{opacity:.9;}
+@media(max-width:480px){.products{grid-template-columns:1fr;}}
+.no-products{text-align:center;font-size:18px;color:#888;margin-top:50px;}
 </style>
 </head>
 <body>
+<div class="container">
+<h1>Catálogo Completo - Selaria Campo do Gado</h1>
+<div class="stats">
+<span>Total de Produtos: <strong id="total-produtos">0</strong></span>
+<span>Total Ativos: <strong id="total-ativos">0</strong></span>
+<span>Categorias: <strong id="total-categorias">0</strong></span>
+<span>Total em Estoque: <strong id="total-estoque">0</strong></span>
+</div>
+<div class="filters">
+<select id="filter-category"><option value="">Filtrar por Categoria</option></select>
+<select id="filter-status"><option value="">Filtrar por Status</option><option value="ATIVO">ATIVO</option><option value="INATIVO">INATIVO</option></select>
+<select id="filter-color"><option value="">Filtrar por Cor</option></select>
+<select id="filter-size"><option value="">Filtrar por Tamanho</option></select>
+<select id="filter-brand"><option value="">Filtrar por Marca</option></select>
+<select id="sort-price"><option value="">Ordenar por Preço</option><option value="asc">Menor para Maior</option><option value="desc">Maior para Menor</option></select>
+<input type="text" id="search" placeholder="Pesquisar por nome...">
+</div>
+<div class="products" id="products"></div>
+<div class="no-products" id="no-products" style="display:none;">Nenhum produto encontrado.</div>
+</div>
+<script>
+const API_URL="https://script.google.com/macros/s/AKfycbzGHCH4LtN3OdvSmyWp-EUYgVvrlqcGqdNAJSHHgHt0cNwlXvPRpIqKZya44LSefVuJ/exec";
+let produtos=[];const container=document.getElementById("products");const noProducts=document.getElementById("no-products");
+const filterCategory=document.getElementById("filter-category");const filterStatus=document.getElementById("filter-status");
+const filterColor=document.getElementById("filter-color");const filterSize=document.getElementById("filter-size");
+const filterBrand=document.getElementById("filter-brand");const sortPrice=document.getElementById("sort-price");
+const searchInput=document.getElementById("search");const totalProdutos=document.getElementById("total-produtos");
+const totalAtivos=document.getElementById("total-ativos");const totalCategorias=document.getElementById("total-categorias");
+const totalEstoque=document.getElementById("total-estoque");
 
-<h1>Catálogo de Produtos</h1>
-<div class="catalog-container" id="catalog"></div>
-
-<script src="./js/catalogo.js"></script>
-</body>
-</html>
+function renderProducts(list){container.innerHTML="";if(list.length===0){noProducts.style.display="block";}else{noProducts.style.display="none";}
+list.forEach(p=>{const card=document.createElement("div");card.className="product";card.innerHTML=`
+<img src="${p["Imagem URL"]}" alt="${p["Nome do Produto"]}">
+<h3>${p["Nome do Prod]()
