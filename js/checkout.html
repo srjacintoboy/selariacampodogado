@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Finalizar</title>
+<script src="js/cart.js"></script>
+</head>
+
+<body>
+
+<h1>Pedido</h1>
+
+<div id="list"></div>
+
+<button onclick="send()">Enviar WhatsApp</button>
+
+<script>
+
+const list = document.getElementById("list");
+
+cart.forEach(p=>{
+list.innerHTML+=`<p>${p.Nome} - R$ ${p.Preço}</p>`;
+});
+
+function send(){
+
+let msg="Pedido:%0A";
+
+cart.forEach(p=>{
+msg+=`${p.Nome} - R$ ${p.Preço}%0A`;
+});
+
+window.open("https://wa.me/5575999975656?text="+msg);
+
+}
+
+</script>
+
+</body>
+</html>
