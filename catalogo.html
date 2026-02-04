@@ -2,67 +2,140 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Catálogo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<title>Catálogo - Selaria Campo do Gado</title>
 
-<script src="js/api.js"></script>
-<script src="js/cart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-body{background:#111;color:#fff;font-family:Poppins}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,250px);gap:20px;padding:30px;justify-content:center}
-.card{background:#1f1f1f;border-radius:15px;overflow:hidden}
-.card img{width:100%;height:200px;object-fit:cover}
-.card div{padding:15px}
-button{background:#c9a46a;border:none;padding:10px;width:100%;cursor:pointer}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#1a1a1a;
+color:#fff;
+padding:20px;
+}
+
+h1{
+text-align:center;
+color:#f5d9a6;
+margin-bottom:30px;
+}
+
+.catalogo{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+background:#262626;
+border-radius:15px;
+overflow:hidden;
+transition:.3s;
+}
+
+.card:hover{
+transform:scale(1.05);
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.info{
+padding:15px;
+}
+
+.info h3{
+color:#f5d9a6;
+font-size:18px;
+margin-bottom:5px;
+}
+
+.info p{
+font-size:14px;
+opacity:.8;
+margin-bottom:10px;
+}
+
+.btn{
+display:block;
+text-align:center;
+background:#c9a46a;
+color:#2b1d12;
+padding:10px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn:hover{
+opacity:.9;
+}
+
+.voltar{
+display:block;
+text-align:center;
+margin:30px auto;
+color:#f5d9a6;
+text-decoration:none;
+}
+
 </style>
 </head>
 
 <body>
 
-<h1 align="center">Catálogo</h1>
+<h1>Catálogo - Selaria Campo do Gado</h1>
 
-<div class="grid" id="grid"></div>
+<div class="catalogo">
 
-<script>
-
-async function load(){
-
-const data = await getProducts();
-
-const list = data.filter(p=>p.Status==="ATIVO");
-
-const grid = document.getElementById("grid");
-
-list.forEach(p=>{
-
-const el = document.createElement("div");
-el.className="card";
-
-el.innerHTML=`
-
-<img src="${p.ImagemURL}">
-
-<div>
-<h3>${p.Nome}</h3>
-<p>R$ ${p.Preço}</p>
-
-<button onclick='addCart(${JSON.stringify(p)})'>
-Adicionar
-</button>
+<!-- PRODUTO 1 -->
+<div class="card">
+<img src="./img/produto1.jpg">
+<div class="info">
+<h3>Sela Tradicional</h3>
+<p>Couro legítimo, alta resistência.</p>
+<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
 </div>
-`;
+</div>
 
-grid.appendChild(el);
+<!-- PRODUTO 2 -->
+<div class="card">
+<img src="./img/produto2.jpg">
+<div class="info">
+<h3>Cabresto Premium</h3>
+<p>Conforto e durabilidade.</p>
+<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
+</div>
+</div>
 
-});
+<!-- PRODUTO 3 -->
+<div class="card">
+<img src="./img/produto3.jpg">
+<div class="info">
+<h3>Rédea em Couro</h3>
+<p>Acabamento artesanal.</p>
+<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
+</div>
+</div>
 
-}
+</div>
 
-load();
-
-</script>
+<a href="index.html" class="voltar">← Voltar</a>
 
 </body>
 </html>
+
