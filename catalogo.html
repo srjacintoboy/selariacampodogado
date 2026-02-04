@@ -3,50 +3,164 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo Completo - Selaria Campo do Gado</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Catálogo - Selaria Campo do Gado</title>
+
+<!-- Fonte elegante -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Ícones -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
-body{font-family:'Poppins',sans-serif;margin:0;padding:0;background:#f4f4f4;color:#2b1d12;}
-.container{max-width:1200px;margin:40px auto;padding:20px;}
-h1{text-align:center;color:#8b6b3f;margin-bottom:20px;}
-.stats{display:flex;flex-wrap:wrap;justify-content:space-around;margin:20px 0;font-weight:600;gap:10px;}
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;justify-content:center;}
-.filters select,.filters input{padding:10px;border-radius:8px;border:1px solid #ccc;width:200px;}
-.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;}
-.product{background:#fff;padding:15px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.1);display:flex;flex-direction:column;align-items:center;text-align:center;transition:.3s;}
-.product:hover{transform:scale(1.02);}
-.product img{width:100%;height:180px;object-fit:cover;border-radius:10px;margin-bottom:10px;}
-.product h3{margin:5px 0;color:#8b6b3f;}
-.product p{margin:3px 0;font-size:14px;}
-.product strong{margin:5px 0;color:#c9a46a;font-size:16px;}
-.product a{display:inline-block;margin-top:5px;text-decoration:none;background:#c9a46a;color:#fff;padding:8px 12px;border-radius:8px;font-weight:600;transition:.3s;}
-.product a:hover{opacity:.9;}
-@media(max-width:480px){.products{grid-template-columns:1fr;}}
-.no-products{text-align:center;font-size:18px;color:#888;margin-top:50px;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:#f3f1ee;
+  margin:0;
+  padding:0;
+  color:#2b1d12;
+}
+header{
+  text-align:center;
+  padding:30px 20px 10px;
+}
+header h1{
+  font-family:'Roboto Slab',serif;
+  color:#8b6b3f;
+  font-size:32px;
+  margin-bottom:5px;
+}
+header p{
+  font-size:16px;
+  color:#5c4a32;
+  margin-bottom:20px;
+}
+.stats{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  font-weight:600;
+  margin-bottom:20px;
+}
+.filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  justify-content:center;
+  margin-bottom:30px;
+}
+.filters select, .filters input{
+  padding:10px;
+  border-radius:8px;
+  border:1px solid #c9a46a;
+  font-weight:500;
+  width:200px;
+}
+.products{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:25px;
+  max-width:1200px;
+  margin:0 auto 50px auto;
+}
+.product{
+  background:#fff8f0;
+  border-radius:15px;
+  padding:15px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+  transition:0.3s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+.product:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 25px rgba(0,0,0,0.2);
+}
+.product img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:12px;
+  margin-bottom:12px;
+  border:2px solid #c9a46a;
+}
+.product h3{
+  color:#8b6b3f;
+  margin-bottom:6px;
+  font-family:'Roboto Slab',serif;
+}
+.product p{
+  font-size:14px;
+  margin-bottom:6px;
+  color:#5c4a32;
+}
+.product strong{
+  color:#c9a46a;
+  font-size:16px;
+  margin-bottom:10px;
+}
+.product-links{
+  display:flex;
+  gap:10px;
+  margin-top:auto;
+}
+.product-links a{
+  flex:1;
+  text-decoration:none;
+  padding:10px 5px;
+  border-radius:8px;
+  font-weight:600;
+  color:#fff;
+  transition:0.3s;
+  text-align:center;
+}
+.product-links a.whatsapp{
+  background:#25d366;
+}
+.product-links a.shopee{
+  background:#ff5722;
+}
+.product-links a:hover{opacity:.85;}
+.no-products{
+  text-align:center;
+  font-size:18px;
+  color:#888;
+  margin-top:50px;
+}
+@media(max-width:480px){
+  .filters select,.filters input{width:100%;}
+}
 </style>
 </head>
 <body>
-<div class="container">
-<h1>Catálogo Completo - Selaria Campo do Gado</h1>
+
+<header>
+<h1>Catálogo Selaria Campo do Gado</h1>
+<p>Rústico, elegante, moderno e confiável para profissionais rurais</p>
+</header>
+
 <div class="stats">
-<span>Total de Produtos: <strong id="total-produtos">0</strong></span>
-<span>Total Ativos: <strong id="total-ativos">0</strong></span>
-<span>Categorias: <strong id="total-categorias">0</strong></span>
-<span>Total em Estoque: <strong id="total-estoque">0</strong></span>
+  <span>Total Produtos: <strong id="total-produtos">0</strong></span>
+  <span>Total Ativos: <strong id="total-ativos">0</strong></span>
+  <span>Categorias: <strong id="total-categorias">0</strong></span>
+  <span>Total Estoque: <strong id="total-estoque">0</strong></span>
 </div>
+
 <div class="filters">
-<select id="filter-category"><option value="">Filtrar por Categoria</option></select>
-<select id="filter-status"><option value="">Filtrar por Status</option><option value="ATIVO">ATIVO</option><option value="INATIVO">INATIVO</option></select>
-<select id="filter-color"><option value="">Filtrar por Cor</option></select>
-<select id="filter-size"><option value="">Filtrar por Tamanho</option></select>
-<select id="filter-brand"><option value="">Filtrar por Marca</option></select>
-<select id="sort-price"><option value="">Ordenar por Preço</option><option value="asc">Menor para Maior</option><option value="desc">Maior para Menor</option></select>
-<input type="text" id="search" placeholder="Pesquisar por nome...">
+  <select id="filter-category"><option value="">Filtrar por Categoria</option></select>
+  <select id="filter-status"><option value="">Filtrar por Status</option><option value="ATIVO">ATIVO</option><option value="INATIVO">INATIVO</option></select>
+  <select id="filter-color"><option value="">Filtrar por Cor</option></select>
+  <select id="filter-size"><option value="">Filtrar por Tamanho</option></select>
+  <select id="filter-brand"><option value="">Filtrar por Marca</option></select>
+  <select id="sort-price"><option value="">Ordenar por Preço</option><option value="asc">Menor → Maior</option><option value="desc">Maior → Menor</option></select>
+  <input type="text" id="search" placeholder="Pesquisar por nome...">
 </div>
+
 <div class="products" id="products"></div>
 <div class="no-products" id="no-products" style="display:none;">Nenhum produto encontrado.</div>
-</div>
+
 <script>
 const API_URL="https://script.google.com/macros/s/AKfycbzGHCH4LtN3OdvSmyWp-EUYgVvrlqcGqdNAJSHHgHt0cNwlXvPRpIqKZya44LSefVuJ/exec";
 let produtos=[];const container=document.getElementById("products");const noProducts=document.getElementById("no-products");
@@ -57,41 +171,57 @@ const searchInput=document.getElementById("search");const totalProdutos=document
 const totalAtivos=document.getElementById("total-ativos");const totalCategorias=document.getElementById("total-categorias");
 const totalEstoque=document.getElementById("total-estoque");
 
-function renderProducts(list){container.innerHTML="";if(list.length===0){noProducts.style.display="block";}else{noProducts.style.display="none";}
-list.forEach(p=>{const card=document.createElement("div");card.className="product";card.innerHTML=`
-<img src="${p["Imagem URL"]}" alt="${p["Nome do Produto"]}">
-<h3>${p["Nome do Produto"]}</h3>
-<p><strong>Categoria:</strong> ${p["Categoria"]}</p>
-<p><strong>Cor:</strong> ${p["Cor"]} | <strong>Tamanho:</strong> ${p["Tamanho"]}</p>
-<p>${p["Descrição"]}</p>
-<strong>R$ ${p["Preço (R$)"]}</strong>
-<div>
-<a href="${p["Link WhatsApp"]}" target="_blank">Comprar no WhatsApp</a>
-<a href="${p["Link Shopee"]}" target="_blank">Shopee</a>
-</div>`;container.appendChild(card);});
-totalProdutos.textContent=list.length;
-totalAtivos.textContent=list.filter(p=>p.Status==="ATIVO").length;
-totalCategorias.textContent=[...new Set(list.map(p=>p.Categoria))].length;
-totalEstoque.textContent=list.reduce((acc,p)=>acc+Number(p["Estoque Total"]||0),0);
+function renderProducts(list){
+  container.innerHTML="";
+  if(list.length===0){noProducts.style.display="block";}else{noProducts.style.display="none";}
+  list.forEach(p=>{
+    const card=document.createElement("div");card.className="product";
+    card.innerHTML=`
+      <img src="${p["Imagem URL"]}" alt="${p["Nome do Produto"]}">
+      <h3>${p["Nome do Produto"]}</h3>
+      <p><strong>Categoria:</strong> ${p["Categoria"]}</p>
+      <p><strong>Cor:</strong> ${p["Cor"]} | <strong>Tamanho:</strong> ${p["Tamanho"]}</p>
+      <p>${p["Descrição"]}</p>
+      <strong>R$ ${p["Preço (R$)"]}</strong>
+      <div class="product-links">
+        <a href="${p["Link WhatsApp"]}" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="${p["Link Shopee"]}" target="_blank" class="shopee"><i class="fas fa-store"></i> Shopee</a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+  totalProdutos.textContent=list.length;
+  totalAtivos.textContent=list.filter(p=>p.Status==="ATIVO").length;
+  totalCategorias.textContent=[...new Set(list.map(p=>p.Categoria))].length;
+  totalEstoque.textContent=list.reduce((acc,p)=>acc+Number(p["Estoque Total"]||0),0);
 }
 
-function populateFilters(){const categories=[...new Set(produtos.map(p=>p.Categoria))];const colors=[...new Set(produtos.map(p=>p.Cor))];
-const sizes=[...new Set(produtos.map(p=>p.Tamanho))];const brands=[...new Set(produtos.map(p=>p.Marca))];
-categories.forEach(c=>filterCategory.appendChild(new Option(c,c)));
-colors.forEach(c=>filterColor.appendChild(new Option(c,c)));
-sizes.forEach(s=>filterSize.appendChild(new Option(s,s)));
-brands.forEach(b=>filterBrand.appendChild(new Option(b,b));
+function populateFilters(){
+  const categories=[...new Set(produtos.map(p=>p.Categoria))];
+  const colors=[...new Set(produtos.map(p=>p.Cor))];
+  const sizes=[...new Set(produtos.map(p=>p.Tamanho))];
+  const brands=[...new Set(produtos.map(p=>p.Marca))];
+  categories.forEach(c=>filterCategory.appendChild(new Option(c,c)));
+  colors.forEach(c=>filterColor.appendChild(new Option(c,c)));
+  sizes.forEach(s=>filterSize.appendChild(new Option(s,s)));
+  brands.forEach(b=>filterBrand.appendChild(new Option(b,b)));
 }
 
-function applyFilters(){let filtered=produtos;const cat=filterCategory.value.toLowerCase();
-const status=filterStatus.value.toLowerCase();const color=filterColor.value.toLowerCase();const size=filterSize.value.toLowerCase();const brand=filterBrand.value.toLowerCase();
-const search=searchInput.value.toLowerCase();
-filtered=filtered.filter(p=>(!cat||p.Categoria.toLowerCase()===cat)&&(!status||p.Status.toLowerCase()===status)&&(!color||p.Cor.toLowerCase()===color)&&(!size||p.Tamanho.toLowerCase()===size)&&(!brand||p.Marca.toLowerCase()===brand)&&(!search||p["Nome do Produto"].toLowerCase().includes(search)));
-if(sortPrice.value==="asc"){filtered.sort((a,b)=>a["Preço (R$)"]-b["Preço (R$)"]);}else if(sortPrice.value==="desc"){filtered.sort((a,b)=>b["Preço (R$)"]-a["Preço (R$)"]);}renderProducts(filtered);
+function applyFilters(){
+  let filtered=produtos;
+  const cat=filterCategory.value.toLowerCase();
+  const status=filterStatus.value.toLowerCase();
+  const color=filterColor.value.toLowerCase();
+  const size=filterSize.value.toLowerCase();
+  const brand=filterBrand.value.toLowerCase();
+  const search=searchInput.value.toLowerCase();
+  filtered=filtered.filter(p=>(!cat||p.Categoria.toLowerCase()===cat)&&(!status||p.Status.toLowerCase()===status)&&(!color||p.Cor.toLowerCase()===color)&&(!size||p.Tamanho.toLowerCase()===size)&&(!brand||p.Marca.toLowerCase()===brand)&&(!search||p["Nome do Produto"].toLowerCase().includes(search)));
+  if(sortPrice.value==="asc"){filtered.sort((a,b)=>a["Preço (R$)"]-b["Preço (R$)"]);}
+  else if(sortPrice.value==="desc"){filtered.sort((a,b)=>b["Preço (R$)"]-a["Preço (R$)"]);}
+  renderProducts(filtered);
 }
 
 fetch(API_URL).then(res=>res.json()).then(data=>{produtos=data;populateFilters();renderProducts(produtos);}).catch(err=>console.error(err));
-
 filterCategory.addEventListener("change",applyFilters);
 filterStatus.addEventListener("change",applyFilters);
 filterColor.addEventListener("change",applyFilters);
@@ -100,5 +230,6 @@ filterBrand.addEventListener("change",applyFilters);
 sortPrice.addEventListener("change",applyFilters);
 searchInput.addEventListener("input",applyFilters);
 </script>
+
 </body>
 </html>
