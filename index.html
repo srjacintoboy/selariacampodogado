@@ -150,7 +150,7 @@
       src="file:///C:/Users/PC%20DOS%20SONHOS/Downloads/WhatsApp%20Image%202026-02-04%20at%2003.56.43.jpeg"
       alt="Logo Selaria Campo do Gado"
       class="logo"
-    >background:url('file:///C:/Users/PC%20DOS%20SONHOS/Downloads/ChatGPT%20Image%205%20de%20fev.%20de%202026,%2012_38_43.png')
+    >
 
     <!-- NOME -->
     <h1>Selaria Campo do Gado</h1>
@@ -184,8 +184,43 @@
         href="#"
         class="link-btn"
         target="_blank"
-      >
-        const API_URL = "https://docs.google.com/spreadsheets/d/15bIQa0agP63MIIbWj23Lz1-gjspCnMXveSIJm1FSsXM/edit?usp=sharing";
+      ><div id="catalog"></div>
+
+<script>
+const API_URL = "https://docs.google.com/spreadsheets/d/15bIQa0agP63MIIbWj23Lz1-gjspCnMXveSIJm1FSsXM/edit?usp=sharing";
+
+fetch(API_URL)
+  .then(res => res.json())
+  .then(data => {
+
+    const container = document.getElementById("catalog");
+
+    data
+      .filter(p => p.Status === "ATIVO")
+      .forEach(p => {
+
+        const card = document.createElement("div");
+        card.className = "product";
+
+        card.innerHTML = `
+          <img src="${p.ImagemURL}">
+          <h3>${p.Nome}</h3>
+          <p>${p.Categoria}</p>
+          <strong>R$ ${p.Preço}</strong>
+
+          <a href="${p.WhatsAppLink}" target="_blank">
+            Comprar no WhatsApp
+          </a>
+
+          <a href="${p.ShopeeLink}" target="_blank">
+            Shopee
+          </a>
+        `;
+
+        container.appendChild(card);
+      });
+  });
+</script>
 
         <i class="fas fa-book"></i>
         Catálogo Virtual
