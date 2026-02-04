@@ -2,9 +2,9 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width=width, initial-scale=1.0">
 
-<title>Catálogo - Selaria Campo do Gado</title>
+<title>Catálogo | Selaria Campo do Gado</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -18,7 +18,7 @@ font-family:Poppins,sans-serif;
 }
 
 body{
-background:#1a1a1a;
+background:#111;
 color:#fff;
 padding:20px;
 }
@@ -30,18 +30,19 @@ margin-bottom:30px;
 }
 
 .catalogo{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
 max-width:1200px;
 margin:auto;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
 }
 
 .card{
-background:#262626;
+background:#222;
 border-radius:15px;
 overflow:hidden;
 transition:.3s;
+box-shadow:0 0 15px rgba(0,0,0,.6);
 }
 
 .card:hover{
@@ -52,6 +53,7 @@ transform:scale(1.05);
 width:100%;
 height:200px;
 object-fit:cover;
+background:#000;
 }
 
 .info{
@@ -70,19 +72,41 @@ opacity:.8;
 margin-bottom:10px;
 }
 
+.preco{
+font-weight:600;
+margin-bottom:10px;
+}
+
+.botoes{
+display:flex;
+gap:8px;
+}
+
 .btn{
-display:block;
-text-align:center;
+flex:1;
 background:#c9a46a;
 color:#2b1d12;
-padding:10px;
+padding:9px;
 border-radius:8px;
 text-decoration:none;
 font-weight:600;
+text-align:center;
+font-size:14px;
+}
+
+.btn.shopee{
+background:#ff6a00;
+color:#fff;
 }
 
 .btn:hover{
 opacity:.9;
+}
+
+.loading{
+text-align:center;
+font-size:18px;
+opacity:.7;
 }
 
 .voltar{
@@ -98,44 +122,87 @@ text-decoration:none;
 
 <body>
 
-<h1>Catálogo - Selaria Campo do Gado</h1>
+<h1>Catálogo</h1>
 
-<div class="catalogo">
+<div id="status" class="loading">Carregando produtos...</div>
 
-<!-- PRODUTO 1 -->
-<div class="card">
-<img src="./img/produto1.jpg">
-<div class="info">
-<h3>Sela Tradicional</h3>
-<p>Couro legítimo, alta resistência.</p>
-<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
-</div>
-</div>
-
-<!-- PRODUTO 2 -->
-<div class="card">
-<img src="./img/produto2.jpg">
-<div class="info">
-<h3>Cabresto Premium</h3>
-<p>Conforto e durabilidade.</p>
-<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
-</div>
-</div>
-
-<!-- PRODUTO 3 -->
-<div class="card">
-<img src="./img/produto3.jpg">
-<div class="info">
-<h3>Rédea em Couro</h3>
-<p>Acabamento artesanal.</p>
-<a href="https://wa.me/5575999975656" class="btn">Comprar</a>
-</div>
-</div>
-
-</div>
+<div class="catalogo" id="catalogo"></div>
 
 <a href="index.html" class="voltar">← Voltar</a>
 
+<script>
+
+// COLE AQUI SUA API
+const API_URL = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjcJ46K8Rz7jxkl386WvJCb7EldFf8CYdqtFFQnx-u3K_2c3PPXn6ORxng6Ch7uijdbkc-9jxExipc8GH33spzWzmwKPPAI6PfCxQ9DjoJ3it4YlSDpDB4LgoCCmlEw_g2But26X0hdBKlcwD1zB57h72Eld4TJFgVJ6-luRIEYdE37WH61uU3y8eLOwlkLa611l7lA8aiTLiPO1fmu7MS0llBAtOngOhT_hM4qRufJkIm2H8QEXvRvA0vf9riplqvKEKpaA_ijEA62c6RC4i9D_og34g&lib=MKwTSaAW_9Mw0X8fiDPHhQhPNnzvyV8Oh";
+
+fetch(API_URL)
+.then(res => res.json())
+.then(data => {
+
+  const status = document.getElementById("status");
+  const catalogo = document.getElementById("catalogo");
+
+  status.style.display = "none";
+
+  const ativos = data.filter(p => p["Status"] === "ATIVO");
+
+  if(ativos.length === 0){
+    status.innerText = "Nenhum produto ativo.";
+    status.style.display = "block";
+    return;
+  }
+
+  ativos.forEach(p => {
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+
+      <img src="${p["Imagem URL"] || './img/fundo.png'}">
+
+      <div class="info">
+
+        <h3>${p["Nome do Produto"]}</h3>
+
+        <p>${p["Descrição"] || ''}</p>
+
+        <div class="preco">R$ ${p["Preço (R$)"]}</div>
+
+        <div class="botoes">
+
+          <a href="${p["Link WhatsApp"]}"
+             target="_blank"
+             class="btn">
+             WhatsApp
+          </a>
+
+          <a href="${p["Link Shopee"]}"
+             target="_blank"
+             class="btn shopee">
+             Shopee
+          </a>
+
+        </div>
+
+      </div>
+    `;
+
+    catalogo.appendChild(card);
+
+  });
+
+})
+.catch(err => {
+
+  document.getElementById("status").innerText =
+  "Erro ao carregar catálogo.";
+
+  console.error(err);
+
+});
+
+</script>
+
 </body>
 </html>
-
