@@ -4,105 +4,153 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Selaria Campo do Gado | Links Oficiais</title>
+
+  <!-- Fonte -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
     }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #2b1d12, #5a3c24);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
+    body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      color:#fff;
     }
 
-    .container {
-      width: 100%;
-      max-width: 420px;
-      background: rgba(0, 0, 0, 0.55);
-      border-radius: 20px;
-      padding: 30px 25px;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(0,0,0,0.7);
-      backdrop-filter: blur(6px);
+    /* FUNDO DESFOCADO */
+    body::before{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+
+      /* TROQUE AQUI PELO LINK DA SUA IMAGEM */
+      background:url('https://via.placeholder.com/1200x800') center/cover no-repeat;
+
+      filter:blur(10px);
+      transform:scale(1.1);
+      z-index:-2;
     }
 
-    .logo {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #c9a46a;
-      margin-bottom: 15px;
+    /* ESCURECER FUNDO */
+    body::after{
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      z-index:-1;
     }
 
-    h1 {
-      font-size: 24px;
-      font-weight: 600;
-      margin-bottom: 5px;
-      color: #f5d9a6;
+    .container{
+      width:100%;
+      max-width:420px;
+      background:rgba(0,0,0,0.65);
+      border-radius:20px;
+      padding:35px 25px;
+      text-align:center;
+      box-shadow:0 0 30px rgba(0,0,0,0.8);
+      backdrop-filter:blur(8px);
     }
 
-    .subtitle {
-      font-size: 14px;
-      margin-bottom: 25px;
-      opacity: 0.9;
+    /* LOGO */
+    .logo{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #c9a46a;
+      margin-bottom:15px;
+      background:#fff;
     }
 
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    h1{
+      font-size:24px;
+      color:#f5d9a6;
+      margin-bottom:5px;
     }
 
-    .link-btn {
-      text-decoration: none;
-      background: linear-gradient(135deg, #c9a46a, #8b6b3f);
-      color: #2b1d12;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
+    .subtitle{
+      font-size:14px;
+      opacity:0.85;
+      margin-bottom:25px;
     }
 
-    .link-btn:hover {
-      transform: scale(1.04);
-      box-shadow: 0 5px 15px rgba(201,164,106,0.5);
+    .links{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
     }
 
-    .footer {
-      margin-top: 25px;
-      font-size: 12px;
-      opacity: 0.7;
+    .link-btn{
+      text-decoration:none;
+      background:linear-gradient(135deg,#c9a46a,#8b6b3f);
+      color:#2b1d12;
+      padding:14px 18px;
+      border-radius:12px;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:0.3s;
     }
 
-    @media (max-width: 480px) {
-      .container {
-        border-radius: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+    .link-btn i{
+      font-size:18px;
+    }
+
+    .link-btn:hover{
+      transform:scale(1.05);
+      box-shadow:0 6px 18px rgba(201,164,106,0.6);
+    }
+
+    .footer{
+      margin-top:25px;
+      font-size:12px;
+      opacity:0.7;
+    }
+
+    @media(max-width:480px){
+      .container{
+        border-radius:0;
+        min-height:100vh;
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
       }
     }
+
   </style>
 </head>
+
 <body>
 
   <div class="container">
 
     <!-- LOGO -->
-    <img src="https://drive.google.com/file/d/1DbL8ZKIgA0Gb9ZwdG3js1045-dO9FDej/view?usp=sharing">
+    <img 
+      src="file:///C:/Users/PC%20DOS%20SONHOS/Downloads/WhatsApp%20Image%202026-02-04%20at%2003.56.43.jpeg"
+      alt="Logo Selaria Campo do Gado"
+      class="logo"
+    >background:url('file:///C:/Users/PC%20DOS%20SONHOS/Downloads/ChatGPT%20Image%205%20de%20fev.%20de%202026,%2012_38_43.png')
 
     <!-- NOME -->
     <h1>Selaria Campo do Gado</h1>
@@ -111,28 +159,65 @@
     <!-- LINKS -->
     <div class="links">
 
-      <a href="https://wa.me/75999975656" class="link-btn" target="_blank">
-        💬 Fale Conosco no WhatsApp
+      <!-- WHATSAPP -->
+      <a 
+        href="https://wa.me/75999975656"
+        class="link-btn"
+        target="_blank"
+      >
+        <i class="fab fa-whatsapp"></i>
+        Fale Conosco no WhatsApp
       </a>
 
-      <a href="#" class="link-btn" target="_blank">
-        📖 Catálogo Virtual Oficial
+      <!-- INSTAGRAM -->
+      <a 
+        href="https://www.instagram.com/campodogado_/"
+        class="link-btn"
+        target="_blank"
+      >
+        <i class="fab fa-instagram"></i>
+        Instagram Oficial
       </a>
 
-      <a href="#" class="link-btn" target="_blank">
-        🛒 Loja na Shopee
+      <!-- CATÁLOGO -->
+      <a 
+        href="#"
+        class="link-btn"
+        target="_blank"
+      >
+        const API_URL = "https://docs.google.com/spreadsheets/d/15bIQa0agP63MIIbWj23Lz1-gjspCnMXveSIJm1FSsXM/edit?usp=sharing";
+
+        <i class="fas fa-book"></i>
+        Catálogo Virtual
       </a>
 
-      <a href="tel:7530225614" class="link-btn">
-        ☎️ Ligue para Nós
+      <!-- SHOPEE -->
+      <a 
+        href="#"
+        class="link-btn"
+        target="_blank"
+      >
+        <i class="fas fa-store"></i>
+        Loja Shopee
       </a>
 
-      <a href="#" class="link-btn" target="_blank">
-        📍 Localização da Loja
+      <!-- TELEFONE -->
+      <a 
+        href="tel:7530225614"
+        class="link-btn"
+      >
+        <i class="fas fa-phone"></i>
+        Ligue para Nós
       </a>
 
-      <a href="#" class="link-btn" target="_blank">
-        📦 Acompanhar Pedido
+      <!-- LOCALIZAÇÃO -->
+      <a 
+        href="#"
+        class="link-btn"
+        target="_blank"
+      >
+        <i class="fas fa-map-marker-alt"></i>
+        Localização
       </a>
 
     </div>
